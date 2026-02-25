@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #00C9A7;
+    --secondary: #4F8EF7;
+    --accent: #7B61FF;
+    --bg-dark: #0A0F1E;
+    --bg-card: #111827;
+    --text-main: #E8F4FD;
+    --text-muted: #6B8BA4;
+    --border: rgba(79,142,247,0.15);
+    --glass: rgba(255,255,255,0.04);
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-color: #0A0F1E;
+    color: #E8F4FD;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  ::selection {
+    background-color: rgba(0, 201, 167, 0.3);
+    color: #E8F4FD;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0A0F1E;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(79,142,247,0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,201,167,0.5);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border rounded-2xl;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(0, 201, 167, 0.3);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px rgba(79, 142, 247, 0.3);
+  }
+
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .mesh-bg {
+    background:
+      radial-gradient(at 40% 20%, rgba(0, 201, 167, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(79, 142, 247, 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(123, 97, 255, 0.08) 0px, transparent 50%),
+      #0A0F1E;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

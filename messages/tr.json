@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "pricing": "Fiyatlandırma",
+    "contact": "İletişim",
+    "login": "Giriş",
+    "register": "Kayıt Ol",
+    "dashboard": "Panel"
+  },
+  "hero": {
+    "badge": "Yapay Zeka ile Güçlendirilmiş",
+    "title": "İşinizi Yapay Zeka ile Otomatize Edin",
+    "subtitle": "ERP, CRM ve pazarlama otomasyonundan kartvizit okuma ve belge takibine kadar tüm iş süreçlerinizi yapay zeka ile hızlandırın.",
+    "cta_primary": "Hemen Başla",
+    "cta_secondary": "Hizmetleri İncele",
+    "stats": {
+      "workflows": "Aktif Workflow",
+      "clients": "Mutlu Müşteri",
+      "automation": "Otomasyon Oranı"
+    }
+  },
+  "services": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "Küçük otomasyon araçlarından kurumsal ERP/CRM çözümlerine kadar her ölçekte hizmet",
+    "automation_title": "Otomasyon Araçları",
+    "automation_subtitle": "Hızlı kurulum, anında başla",
+    "enterprise_title": "Kurumsal Çözümler",
+    "enterprise_subtitle": "Airtable tabanlı tam kapsamlı iş yönetimi",
+    "cta": "Hemen Satın Al",
+    "cta_quote": "Teklif Al",
+    "detail": "Detay",
+    "kartvizit": {
+      "title": "Kartvizit Okuyucu",
+      "description": "Telegram üzerinden kartvizit fotoğrafı gönderin. AI görüntüyü okusun, Google Contacts ve Airtable'a otomatik kaydetsin.",
+      "badge": "Telegram + AI",
+      "price": "$50",
+      "currency": "USD",
+      "features": ["Google Contacts otomatik kayıt", "Airtable CRM entegrasyonu", "Telegram anlık bildirim", "Sınırsız kart okuma"]
+    },
+    "belge_takip": {
+      "title": "Belge Takip",
+      "description": "Google Drive klasörünüze dosya atın. OCR ile içerik okunur, Google Sheets'e kaydedilir, dosya işlenmiş klasöre taşınır.",
+      "badge": "Drive + OCR",
+      "price": "$50",
+      "currency": "USD",
+      "features": ["Otomatik OCR işleme", "Google Sheets'e kayıt", "Klasör yönetimi", "Gerçek zamanlı tetikleme"]
+    },
+    "erp": {
+      "title": "ERP Sistemi",
+      "description": "Airtable tabanlı tam kapsamlı ERP çözümü. Stok, satın alma, satış, üretim ve finans modülleri tek platformda.",
+      "badge": "Airtable ERP",
+      "price": "$3.500",
+      "currency": "USD",
+      "features": ["Stok & Depo Yönetimi", "Satın Alma & Tedarikçi", "Satış & Müşteri Takibi", "Üretim Planlama", "Finans & Muhasebe", "Özel kurulum & eğitim"]
+    },
+    "crm": {
+      "title": "CRM Sistemi",
+      "description": "Airtable tabanlı müşteri ilişkileri yönetimi. Lead takibi, satış hunisi, teklif ve sözleşme yönetimi.",
+      "badge": "Airtable CRM",
+      "price": "$2.500",
+      "currency": "USD",
+      "features": ["Lead & Müşteri Takibi", "Satış Hunisi Yönetimi", "Teklif & Sözleşme", "E-posta & Aktivite Geçmişi", "Raporlama & Analitik", "Özel kurulum & eğitim"]
+    },
+    "pazarlama": {
+      "title": "Pazarlama Otomasyonu",
+      "description": "Sosyal medya, e-posta kampanyaları ve içerik üretimini yapay zeka ile otomatize edin. n8n workflow'ları ile tam entegrasyon.",
+      "badge": "AI Pazarlama",
+      "price": "€2.000",
+      "currency": "EUR",
+      "features": ["Sosyal Medya Otomasyonu", "AI İçerik Üretimi", "E-posta Kampanyaları", "Lead Nurturing", "Performans Raporlama", "Özel kurulum & eğitim"]
+    }
+  },
+  "how_it_works": {
+    "title": "Nasıl Çalışır?",
+    "subtitle": "3 basit adımda yapay zeka otomasyonunuzu başlatın",
+    "steps": [
+      {
+        "title": "Kayıt Ol",
+        "description": "E-posta adresinizle ücretsiz hesap oluşturun. Dakikalar içinde hazır."
+      },
+      {
+        "title": "Ödeme Yap",
+        "description": "İhtiyacınıza uygun hizmeti seçin ve güvenli Stripe ödeme ile satın alın."
+      },
+      {
+        "title": "Kullanmaya Başla",
+        "description": "Kurulum ekibimiz sizi arar, sisteminizi kurar ve eğitim verir."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Müşterilerimiz Ne Diyor?",
+    "subtitle": "Gerçek kullanıcı deneyimleri"
+  },
+  "contact_cta": {
+    "title": "Sorularınız mı Var?",
+    "subtitle": "WhatsApp üzerinden bize ulaşın, hızlıca yanıt verelim.",
+    "whatsapp": "WhatsApp'tan Yaz",
+    "contact_form": "İletişim Formu"
+  },
+  "footer": {
+    "description": "Yapay zeka ve otomasyon hizmetleriyle işinizi geleceğe taşıyın.",
+    "links": "Bağlantılar",
+    "legal": "Yasal",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları",
+    "copyright": "© 2026 aipuerto.com. Tüm hakları saklıdır."
+  },
+  "pricing": {
+    "title": "Fiyatlandırma",
+    "subtitle": "İhtiyacınıza uygun çözümü seçin — tek seferlik ödeme, aylık abonelik yok",
+    "one_time": "Tek Seferlik Ödeme",
+    "popular": "En Popüler",
+    "buy_now": "Hemen Satın Al",
+    "get_quote": "Teklif Al",
+    "whatsapp_quote": "WhatsApp'tan Teklif Al",
+    "automation_section": "Otomasyon Araçları",
+    "automation_desc": "Hızlı kur, hemen kullan",
+    "enterprise_section": "Kurumsal Çözümler",
+    "enterprise_desc": "Airtable tabanlı tam kapsamlı iş yönetimi — kurulum ve eğitim dahil",
+    "cta_title": "Hangi çözüm size uygun?",
+    "cta_subtitle": "WhatsApp üzerinden ulaşın, ihtiyacınıza özel öneri yapalım."
+  },
+  "auth": {
+    "login_title": "Giriş Yap",
+    "login_subtitle": "Hesabınıza erişin",
+    "register_title": "Kayıt Ol",
+    "register_subtitle": "Ücretsiz hesap oluşturun",
+    "email": "E-posta",
+    "password": "Şifre",
+    "full_name": "Ad Soyad",
+    "company": "Şirket (opsiyonel)",
+    "login_btn": "Giriş Yap",
+    "register_btn": "Kayıt Ol",
+    "no_account": "Hesabınız yok mu?",
+    "have_account": "Zaten hesabınız var mı?",
+    "forgot_password": "Şifremi Unuttum"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "my_services": "Hizmetlerim",
+    "profile": "Profil",
+    "no_services": "Henüz bir hizmet satın almadınız.",
+    "browse_services": "Hizmetlere Göz At",
+    "setup_required": "Kurulum Gerekiyor",
+    "active": "Aktif",
+    "webhook_url": "Webhook URL",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!"
+  }
+}

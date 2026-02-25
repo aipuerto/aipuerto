@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Sign Up",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "badge": "Powered by Artificial Intelligence",
+    "title": "Automate Your Business with AI",
+    "subtitle": "From ERP, CRM and marketing automation to business card scanning and document tracking — accelerate every process with AI.",
+    "cta_primary": "Get Started",
+    "cta_secondary": "Explore Services",
+    "stats": {
+      "workflows": "Active Workflows",
+      "clients": "Happy Clients",
+      "automation": "Automation Rate"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "From quick automation tools to full-scale enterprise ERP/CRM solutions",
+    "automation_title": "Automation Tools",
+    "automation_subtitle": "Quick setup, start immediately",
+    "enterprise_title": "Enterprise Solutions",
+    "enterprise_subtitle": "Airtable-based full business management",
+    "cta": "Buy Now",
+    "cta_quote": "Get Quote",
+    "detail": "Details",
+    "kartvizit": {
+      "title": "Business Card Reader",
+      "description": "Send a business card photo via Telegram. AI reads it and automatically saves to Google Contacts and Airtable.",
+      "badge": "Telegram + AI",
+      "price": "$50",
+      "currency": "USD",
+      "features": ["Auto-save to Google Contacts", "Airtable CRM integration", "Telegram instant notification", "Unlimited card scanning"]
+    },
+    "belge_takip": {
+      "title": "Document Tracking",
+      "description": "Drop files in your Google Drive folder. OCR reads the content, saves to Google Sheets, and moves the file to the processed folder.",
+      "badge": "Drive + OCR",
+      "price": "$50",
+      "currency": "USD",
+      "features": ["Automatic OCR processing", "Save to Google Sheets", "Folder management", "Real-time triggering"]
+    },
+    "erp": {
+      "title": "ERP System",
+      "description": "Full-scale Airtable-based ERP solution. Inventory, purchasing, sales, production and finance modules on one platform.",
+      "badge": "Airtable ERP",
+      "price": "$3,500",
+      "currency": "USD",
+      "features": ["Inventory & Warehouse", "Purchasing & Suppliers", "Sales & Customer Tracking", "Production Planning", "Finance & Accounting", "Custom setup & training"]
+    },
+    "crm": {
+      "title": "CRM System",
+      "description": "Airtable-based customer relationship management. Lead tracking, sales pipeline, proposal and contract management.",
+      "badge": "Airtable CRM",
+      "price": "$2,500",
+      "currency": "USD",
+      "features": ["Lead & Customer Tracking", "Sales Pipeline", "Proposals & Contracts", "Email & Activity History", "Reporting & Analytics", "Custom setup & training"]
+    },
+    "pazarlama": {
+      "title": "Marketing Automation",
+      "description": "Automate social media, email campaigns and content creation with AI. Full integration via n8n workflows.",
+      "badge": "AI Marketing",
+      "price": "€2,000",
+      "currency": "EUR",
+      "features": ["Social Media Automation", "AI Content Creation", "Email Campaigns", "Lead Nurturing", "Performance Reporting", "Custom setup & training"]
+    }
+  },
+  "how_it_works": {
+    "title": "How It Works?",
+    "subtitle": "Start your AI automation in 3 simple steps",
+    "steps": [
+      {
+        "title": "Sign Up",
+        "description": "Create a free account with your email. Ready in minutes."
+      },
+      {
+        "title": "Pay",
+        "description": "Choose the service that suits your needs and purchase with secure Stripe payment."
+      },
+      {
+        "title": "Start Using",
+        "description": "Our setup team calls you, installs the system and provides training."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Our Customers Say?",
+    "subtitle": "Real user experiences"
+  },
+  "contact_cta": {
+    "title": "Have Questions?",
+    "subtitle": "Reach us on WhatsApp and we'll respond quickly.",
+    "whatsapp": "Message on WhatsApp",
+    "contact_form": "Contact Form"
+  },
+  "footer": {
+    "description": "Take your business to the future with AI and automation services.",
+    "links": "Links",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2026 aipuerto.com. All rights reserved."
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Choose the right solution — one-time payment, no monthly subscription",
+    "one_time": "One-Time Payment",
+    "popular": "Most Popular",
+    "buy_now": "Buy Now",
+    "get_quote": "Get Quote",
+    "whatsapp_quote": "Get Quote on WhatsApp",
+    "automation_section": "Automation Tools",
+    "automation_desc": "Quick setup, start immediately",
+    "enterprise_section": "Enterprise Solutions",
+    "enterprise_desc": "Airtable-based full business management — setup & training included",
+    "cta_title": "Not sure which solution fits you?",
+    "cta_subtitle": "Reach us on WhatsApp and we'll recommend the right option for your needs."
+  },
+  "auth": {
+    "login_title": "Login",
+    "login_subtitle": "Access your account",
+    "register_title": "Sign Up",
+    "register_subtitle": "Create a free account",
+    "email": "Email",
+    "password": "Password",
+    "full_name": "Full Name",
+    "company": "Company (optional)",
+    "login_btn": "Login",
+    "register_btn": "Sign Up",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "forgot_password": "Forgot Password"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "my_services": "My Services",
+    "profile": "Profile",
+    "no_services": "You haven't purchased any services yet.",
+    "browse_services": "Browse Services",
+    "setup_required": "Setup Required",
+    "active": "Active",
+    "webhook_url": "Webhook URL",
+    "copy": "Copy",
+    "copied": "Copied!"
+  }
+}
