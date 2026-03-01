@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations, useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import {
   Check, MessageSquare, FolderSearch, BarChart3, Users, TrendingUp,
@@ -36,21 +37,27 @@ const automationServices = [
 const enterpriseServices = [
   {
     slug: 'erp',
+    serviceSlug: 'erp',
     icon: BarChart3,
+    priceEnvKey: 'NEXT_PUBLIC_STRIPE_PRICE_ERP',
     color: 'accent',
     iconBg: 'bg-accent/10',
     iconColor: 'text-accent',
   },
   {
     slug: 'crm',
+    serviceSlug: 'crm',
     icon: Users,
+    priceEnvKey: 'NEXT_PUBLIC_STRIPE_PRICE_CRM',
     color: 'primary',
     iconBg: 'bg-primary/10',
     iconColor: 'text-primary',
   },
   {
     slug: 'pazarlama',
+    serviceSlug: 'sosyal-medya',
     icon: TrendingUp,
+    priceEnvKey: 'NEXT_PUBLIC_STRIPE_PRICE_PAZARLAMA',
     color: 'secondary',
     iconBg: 'bg-secondary/10',
     iconColor: 'text-secondary',
@@ -61,11 +68,20 @@ export default function PricingPage() {
   const t = useTranslations('pricing')
   const ts = useTranslations('services')
   const locale = useLocale()
+  const router = useRouter()
 
   const handleBuy = async (serviceSlug: string) => {
+    // Kartvizit için kurulum sihirbazına yönlendir
+    if (serviceSlug === 'kartvizit-ajan') {
+      router.push(`/${locale}/kartvizit-kurulum`)
+      return
+    }
+
     const priceIdMap: Record<string, string | undefined> = {
-      'kartvizit-ajan': process.env.NEXT_PUBLIC_STRIPE_PRICE_KARTVIZIT,
       'drive-ocr': process.env.NEXT_PUBLIC_STRIPE_PRICE_DRIVE_OCR,
+      'erp': process.env.NEXT_PUBLIC_STRIPE_PRICE_ERP,
+      'crm': process.env.NEXT_PUBLIC_STRIPE_PRICE_CRM,
+      'sosyal-medya': process.env.NEXT_PUBLIC_STRIPE_PRICE_PAZARLAMA,
     }
     const priceId = priceIdMap[serviceSlug]
     if (!priceId || priceId === 'price_placeholder') {
@@ -75,7 +91,7 @@ export default function PricingPage() {
     const res = await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ priceId, serviceSlug }),
+      body: JSON.stringify({ priceId, serviceSlug, locale }),
     })
     const { url, error } = await res.json()
     if (error) { alert(error); return }
@@ -221,16 +237,14 @@ export default function PricingPage() {
                       ))}
                     </ul>
 
-                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                      <Button
-                        variant="outline"
-                        className="w-full border-accent/30 hover:border-accent hover:bg-accent/10 hover:text-accent"
-                        size="lg"
-                      >
-                        <MessageCircle className="w-4 h-4" />
-                        {t('whatsapp_quote')}
-                      </Button>
-                    </a>
+                    <Button
+                      className="w-full group/btn"
+                      size="lg"
+                      onClick={() => handleBuy(svc.serviceSlug)}
+                    >
+                      {t('buy_now')}
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </Button>
                   </div>
                 </motion.div>
               )

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Zap, Copy, Check, Settings, ExternalLink, AlertCircle } from 'lucide-react'
+import { Zap, Copy, Check, Settings, AlertCircle, MessageSquare, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -50,6 +50,30 @@ export default function HizmetlerimPage() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [configValues, setConfigValues] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState(false)
+  const [supportSubject, setSupportSubject] = useState('')
+  const [supportMessage, setSupportMessage] = useState('')
+  const [supportSending, setSupportSending] = useState(false)
+  const [supportSent, setSupportSent] = useState(false)
+
+  const sendSupport = async () => {
+    if (!supportMessage.trim()) return
+    setSupportSending(true)
+    try {
+      const res = await fetch('/api/support', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject: supportSubject, message: supportMessage }),
+      })
+      if (res.ok) {
+        setSupportSent(true)
+        setSupportSubject('')
+        setSupportMessage('')
+        setTimeout(() => setSupportSent(false), 5000)
+      }
+    } finally {
+      setSupportSending(false)
+    }
+  }
 
   useEffect(() => {
     const fetchPurchases = async () => {
@@ -222,6 +246,48 @@ export default function HizmetlerimPage() {
           })}
         </div>
       )}
+
+      {/* Destek Formu */}
+      <div className="mt-8 glass-card p-6">
+        <h2 className="font-display font-bold text-lg mb-4 flex items-center gap-2">
+          <MessageSquare className="w-5 h-5 text-primary" />
+          Soru / Geri Bildirim
+        </h2>
+
+        {supportSent ? (
+          <div className="flex items-center gap-2 text-green-400 text-sm p-4 bg-green-500/10 rounded-xl border border-green-500/20">
+            <CheckCircle2 className="w-4 h-4" />
+            Mesajınız iletildi. En kısa sürede dönüş yapacağız.
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="space-y-1.5">
+              <Label className="text-xs">Konu (opsiyonel)</Label>
+              <Input
+                placeholder="Aktivasyon sorusu, teknik yardım..."
+                value={supportSubject}
+                onChange={(e) => setSupportSubject(e.target.value)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label className="text-xs">Mesajınız</Label>
+              <textarea
+                rows={4}
+                placeholder="Sorunuzu veya geri bildiriminizi yazın..."
+                value={supportMessage}
+                onChange={(e) => setSupportMessage(e.target.value)}
+                className="w-full rounded-xl border border-border bg-card px-4 py-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+              />
+            </div>
+            <Button
+              onClick={sendSupport}
+              disabled={supportSending || !supportMessage.trim()}
+            >
+              {supportSending ? 'Gönderiliyor...' : 'Gönder'}
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

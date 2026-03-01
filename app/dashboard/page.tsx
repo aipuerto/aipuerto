@@ -2,8 +2,15 @@ import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import { Package, Settings, ArrowRight, Zap, CheckCircle, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import SuccessToast from '@/components/SuccessToast'
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ success?: string }>
+}) {
+  const params = await searchParams
+  const showSuccess = params.success === 'true'
   const supabase = await createClient()
   const {
     data: { user },
@@ -26,6 +33,8 @@ export default async function DashboardPage() {
   const setupPending = activePurchases.length - setupComplete
 
   return (
+    <>
+    <SuccessToast show={showSuccess} />
     <div className="max-w-5xl mx-auto">
       {/* Header */}
       <div className="mb-8">
@@ -125,5 +134,6 @@ export default async function DashboardPage() {
         )}
       </div>
     </div>
+    </>
   )
 }

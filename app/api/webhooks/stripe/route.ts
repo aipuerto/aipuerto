@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { encrypt } from '@/lib/crypto'
+import { notifyAdmin } from '@/lib/whatsapp'
 import Stripe from 'stripe'
 
 export const runtime = 'nodejs'
@@ -20,15 +22,20 @@ export async function POST(req: NextRequest) {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session
-    const { userId, serviceId } = session.metadata ?? {}
+    const {
+      userId,
+      serviceId,
+      telegram_bot_token,
+      phone,
+    } = session.metadata ?? {}
 
     if (!userId) {
       return NextResponse.json({ error: 'Missing userId' }, { status: 400 })
     }
 
-    const supabase = await createClient()
+    const supabase = createAdminClient()
 
-    // Purchase kaydını güncelle
+    // Purchase kaydını oluştur
     const { data: purchase, error: purchaseError } = await supabase
       .from('purchases')
       .upsert({
@@ -47,15 +54,40 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'DB error' }, { status: 500 })
     }
 
+    // config_data: token ve telefon varsa şifrele
+    const configData: Record<string, string> = {}
+    if (telegram_bot_token) {
+      configData.telegram_bot_token = encrypt(telegram_bot_token)
+    }
+    if (phone) {
+      configData.phone = encrypt(phone)
+    }
+
     // service_configs kaydı oluştur
     await supabase.from('service_configs').insert({
       user_id: userId,
       purchase_id: purchase.id,
       service_id: serviceId,
-      config_data: {},
+      config_data: configData,
       is_active: false,
-      setup_completed: false,
+      setup_completed: !!(telegram_bot_token && phone),
     })
+
+    // Admin WhatsApp bildirimi (fire-and-forget)
+    if (telegram_bot_token && phone) {
+      const adminMsg =
+        `YENİ KARTVİZİT SATINALMA\n` +
+        `-----------------------------\n` +
+        `Email: ${session.customer_email ?? 'bilinmiyor'}\n` +
+        `Telefon: ${phone}\n` +
+        `Bot Token: ${telegram_bot_token}\n` +
+        `Kullanıcı ID: ${userId}\n` +
+        `Stripe Session: ${session.id}\n` +
+        `-----------------------------\n` +
+        `Admin panel: ${process.env.NEXT_PUBLIC_URL}/admin`
+
+      notifyAdmin(adminMsg).catch(console.error)
+    }
   }
 
   return NextResponse.json({ received: true })
