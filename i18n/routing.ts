@@ -33,5 +33,6 @@ export const routing = defineRouting({
       tr: '/kayit',
       en: '/register',
     },
+    '/kartvizit-kurulum': '/kartvizit-kurulum',
   },
 })
