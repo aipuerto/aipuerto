@@ -113,7 +113,7 @@ on conflict do nothing;
 -- ── 5. PURCHASES ────────────────────────────────────────────────
 create table if not exists public.purchases (
   id                uuid primary key default gen_random_uuid(),
-  user_id           uuid references public.profiles(id) on delete cascade,
+  user_id           uuid references auth.users(id) on delete cascade,
   service_id        uuid references public.services(id),
   package_id        uuid references public.packages(id),
   stripe_session_id text unique,
@@ -126,7 +126,7 @@ create table if not exists public.purchases (
 -- ── 6. SERVICE_CONFIGS ──────────────────────────────────────────
 create table if not exists public.service_configs (
   id              uuid primary key default gen_random_uuid(),
-  user_id         uuid references public.profiles(id) on delete cascade,
+  user_id         uuid references auth.users(id) on delete cascade,
   purchase_id     uuid references public.purchases(id) on delete cascade,
   service_id      uuid references public.services(id),
   config_data     jsonb not null default '{}',

@@ -35,12 +35,21 @@ export async function POST(req: NextRequest) {
 
     const supabase = createAdminClient()
 
+    // Slug'dan service UUID'sini al
+    const { data: serviceRecord } = await supabase
+      .from('services')
+      .select('id')
+      .eq('slug', serviceId)
+      .single()
+
+    const serviceUuid = serviceRecord?.id ?? null
+
     // Purchase kaydını oluştur
     const { data: purchase, error: purchaseError } = await supabase
       .from('purchases')
       .upsert({
         user_id: userId,
-        service_id: serviceId,
+        service_id: serviceUuid,
         stripe_session_id: session.id,
         stripe_payment_id: session.payment_intent as string,
         status: 'paid',
@@ -67,7 +76,7 @@ export async function POST(req: NextRequest) {
     await supabase.from('service_configs').insert({
       user_id: userId,
       purchase_id: purchase.id,
-      service_id: serviceId,
+      service_id: serviceUuid,
       config_data: configData,
       is_active: false,
       setup_completed: !!(telegram_bot_token && phone),
